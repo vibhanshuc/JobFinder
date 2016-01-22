@@ -67,13 +67,13 @@
 
                         </div>
                         <div class="col-md-6">
-                            <div class="jumbotron">
+                            <div class="jumbotron" ng-if="vm.jobs.length">
                                 <div class="list-group">
                                     <div ng-repeat="job in vm.jobs | orderBy:'createdAt':true">
 
                                         <div class="list-group-item">
-                                            <div class="row-action-primary">
-                                                <i class="material-icons">folder</i>
+                                            <div class="row-action-primary" ng-click="vm.deleteJob($index)">
+                                                <i class="material-icons" style="cursor: pointer">delete</i>
                                             </div>
                                             <div class="row-content">
                                                 <div class="least-content"><span am-time-ago="job.createdAt"></span></div>
@@ -82,7 +82,7 @@
                                                 <p class="list-group-item-text">{{ job.description }}</p>
                                             </div>
                                         </div>
-                                        <div class="list-group-separator"></div>
+                                        <div class="list-group-separator" ng-hide="$last"></div>
                                     </div>
 
                                 </div>

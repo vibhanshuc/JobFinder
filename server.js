@@ -32,11 +32,17 @@
 	app.post('/api/jobs', function(req, res) {
 		var title = req.body.title,
 			description = req.body.description;
-		jobModel.createJob({
+		var instance = jobModel.createJob({
 			title: title,
 			description: description
 		});
-		res.send('success');
+		res.send({data: instance});
+	});
+
+	app.delete('/api/jobs/:id', function (req, res) {
+		var id = req.params.id;
+		jobModel.deleteJob(id);
+		res.send('Success fully deleted');
 	});
 
 

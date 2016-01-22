@@ -16,7 +16,17 @@
 	var Job = mongoose.model('job', jobSchema);
 
 	exports.createJob = function createJob (job) {
-		return Job.create(job);
+		var jobObj = new Job(job);
+		jobObj.save();
+		return jobObj;
+	};
+
+	exports.deleteJob = function (id) {
+		Job.remove({_id: id}, function(err) {
+			if (err){
+				console.log('Error removing job', err);
+			}
+		})
 	};
 
 	exports.SeedJobs = function () {

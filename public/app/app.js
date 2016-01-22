@@ -17,10 +17,15 @@
 
 		vm.createJob = function (job) {
 			var data = new JobModel(job);
-			job.createdAt = new Date();
-			vm.job = {};
-			vm.jobs.push(job);
-			data.$save();
+			data.$save().then(function (result) {
+				vm.job = {};
+				vm.jobs.push(result);
+			});
+		};
+
+		vm.deleteJob = function (index) {
+			vm.jobs[index].$destroy();
+			vm.jobs.splice(index, 1);
 		};
 
 		getJobs();
@@ -30,7 +35,9 @@
 	angular.module('JobFinder', ['modelFactory', 'angularMoment'])
 		.controller('AppController', AppController)
 		.service('JobModel', function($modelFactory){
-			return $modelFactory('/api/jobs');
+			return $modelFactory('/api/jobs', {
+				pk: '_id'
+			});
 		});
 
 	AppController.$inject = ['JobModel'];
