@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="JobFinder">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body  ng-controller="AppController as vm">
+    <nav class="navbar navbar-default" role="navigation">
+    	<!-- Brand and toggle get grouped for better mobile display -->
+    	<div class="navbar-header">
+    		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+    			<span class="sr-only">Toggle navigation</span>
+    			<span class="icon-bar"></span>
+    			<span class="icon-bar"></span>
+    			<span class="icon-bar"></span>
+    		</button>
+    		<a class="navbar-brand" href="#">Home</a>
+    	</div>
+    </nav>
+    <div class="container">
+        <div class="jumbotron">
+            <h2>{{ vm.title }}</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                 <div class="list-group">
+                        <a href="#" class="list-group-item" ng-repeat="job in vm.jobs">
+                            <h4 class="list-group-item-heading">{{ job.title }}</h4>
+                            <p class="list-group-item-text">{{ job.description }}</p>
+                        </a>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="app/app.js"></script>
+
+</body>
+</html>

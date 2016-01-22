@@ -1,0 +1,24 @@
+{
+  "name": "jobfinder",
+  "description": "A simple job listing app.",
+  "main": "index.js",
+  "authors": [
+    "Vibhanshu Chaturvedi <vibhanshu86@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "https://github.com/vibhanshuc/JobFinder.git",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "angular": "~1.4.9",
+    "bootstrap": "~3.3.6"
+  }
+}

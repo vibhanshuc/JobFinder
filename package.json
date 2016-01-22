@@ -1,0 +1,25 @@
+{
+  "name": "jobfinder",
+  "version": "0.0.0",
+  "description": "A simple job listing app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vibhanshuc/JobFinder.git"
+  },
+  "author": "Vibhanshu Chaturvedi <vibhanshu86@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vibhanshuc/JobFinder/issues"
+  },
+  "homepage": "https://github.com/vibhanshuc/JobFinder#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "bower": "^1.7.2"
+  }
+}
