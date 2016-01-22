@@ -19,6 +19,15 @@
   "dependencies": {
     "jquery": "~2.2.0",
     "angular": "~1.4.9",
-    "bootstrap": "~3.3.6"
+    "bootstrap": "~3.3.6",
+    "angular-model-factory": "91-angular-model-factory#v0.0.2",
+    "bootstrap-material-design": "~0.5.7",
+    "angular-moment": "~0.10.3",
+    "moment": "~2.11.1"
+  },
+  "resolutions": {
+    "jquery": "~2.2.0 ",
+    "moment": "~2.11.1",
+    "angular": "~1.4.9 "
   }
 }

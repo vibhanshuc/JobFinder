@@ -1,46 +1,117 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="JobFinder">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Title</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Title</title>
 
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-</head>
-<body  ng-controller="AppController as vm">
-    <nav class="navbar navbar-default" role="navigation">
-    	<!-- Brand and toggle get grouped for better mobile display -->
-    	<div class="navbar-header">
-    		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-    			<span class="sr-only">Toggle navigation</span>
-    			<span class="icon-bar"></span>
-    			<span class="icon-bar"></span>
-    			<span class="icon-bar"></span>
-    		</button>
-    		<a class="navbar-brand" href="#">Home</a>
-    	</div>
-    </nav>
-    <div class="container">
-        <div class="jumbotron">
-            <h2>{{ vm.title }}</h2>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                 <div class="list-group">
-                        <a href="#" class="list-group-item" ng-repeat="job in vm.jobs">
-                            <h4 class="list-group-item-heading">{{ job.title }}</h4>
-                            <p class="list-group-item-text">{{ job.description }}</p>
-                        </a>
-                    </div>
+        <!-- Material Design fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.css">
+        <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/ripples.css">
+        <style>
+            [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+                display: none !important;
+            }
+            .container {
+                margin-top: 70px;
+            }
+            footer {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body ng-controller="AppController as vm">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-responsive-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">{{vm.title}}</a>
+                </div>
             </div>
         </div>
-    </div>
 
+        <div class="container" ng-cloak>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="well well-default">
 
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/bower_components/angular/angular.min.js"></script>
-    <script src="app/app.js"></script>
+                                <form action="" method="post" role="form">
+                                    <legend>Add a new Job</legend>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="title" ng-model="vm.job.title"
+                                               placeholder="Title of Job...">
+                                    </div>
 
-</body>
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="description" ng-model="vm.job.description"
+                                                  placeholder="Description of Job..."></textarea>
+                                    </div>
+
+                                    <button type="button" class="btn btn-primary"
+                                            ng-disabled="!(vm.job.title && vm.job.description)" ng-click="vm.createJob(vm.job)">
+                                        Add
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="jumbotron">
+                                <div class="list-group">
+                                    <div ng-repeat="job in vm.jobs | orderBy:'createdAt':true">
+
+                                        <div class="list-group-item">
+                                            <div class="row-action-primary">
+                                                <i class="material-icons">folder</i>
+                                            </div>
+                                            <div class="row-content">
+                                                <div class="least-content"><span am-time-ago="job.createdAt"></span></div>
+                                                <h4 class="list-group-item-heading">{{ job.title }}</h4>
+
+                                                <p class="list-group-item-text">{{ job.description }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-separator"></div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <script src="bower_components/jquery/dist/jquery.min.js"></script>
+                <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+                <script src="bower_components/bootstrap-material-design/dist/js/material.js"></script>
+                <script src="bower_components/bootstrap-material-design/dist/js/ripples.js"></script>
+                <script src="bower_components/angular/angular.min.js"></script>
+                <script src="bower_components/moment/moment.js"></script>
+                <script src="bower_components/angular-moment/angular-moment.js"></script>
+                <script src="bower_components/deep-diff/index.js"></script>
+                <script src="bower_components/uri-templates/uri-templates.min.js"></script>
+                <script src="bower_components/angular-model-factory/src/angular-model-factory.js"></script>
+                <script src="app/app.js"></script>
+                <script>
+                    $.material.init()
+                </script>
+
+            </div>
+        </div>
+        <footer class="text-center bg-primary">
+            <span>&copy; Vibhanshu Chaturvedi</span>
+        </footer>
+    </body>
 </html>

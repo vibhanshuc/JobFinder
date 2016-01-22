@@ -2,32 +2,37 @@
 	'use strict';
 
 
-	function AppController() {
+	function AppController(JobModel) {
 
 		var vm = this;
 
-		function activate() {
+		var getJobs = function () {
+			JobModel.query().then(function(result) {
+				vm.jobs = vm.jobs.concat(result);
+			});
+		};
 
-		}
+		vm.title = 'JobFinder';
+		vm.jobs = [];
 
+		vm.createJob = function (job) {
+			var data = new JobModel(job);
+			job.createdAt = new Date();
+			vm.job = {};
+			vm.jobs.push(job);
+			data.$save();
+		};
 
-		vm.activate = activate;
-		vm.title = 'Welcome To JobFinder';
-		vm.jobs = [{
-			title: 'Sales Head',
-			description: 'I really don\'t know what a sales person does.'
-		},
-			{
-				title: 'Sales Manager',
-				description: 'Does some awesome magic tricks on little bit of boot licking.'
-			}
-		];
-
-		activate();
+		getJobs();
 
 	}
 
-	angular.module('JobFinder', [])
-		.controller('AppController', AppController);
+	angular.module('JobFinder', ['modelFactory', 'angularMoment'])
+		.controller('AppController', AppController)
+		.service('JobModel', function($modelFactory){
+			return $modelFactory('/api/jobs');
+		});
+
+	AppController.$inject = ['JobModel'];
 	
 })();

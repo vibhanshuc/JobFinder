@@ -4,7 +4,9 @@
   "description": "A simple job listing app.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "repository": {
     "type": "git",
@@ -17,9 +19,12 @@
   },
   "homepage": "https://github.com/vibhanshuc/JobFinder#readme",
   "dependencies": {
-    "express": "^4.13.4"
+    "bower": "^1.7.2",
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "mongoose": "^4.3.6"
   },
   "devDependencies": {
-    "bower": "^1.7.2"
+    "nodemon": "^1.8.1"
   }
 }
